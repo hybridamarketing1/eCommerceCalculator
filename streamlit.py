@@ -104,6 +104,9 @@ elif menu == 'Log In':
                     st.session_state.invia_clicked = invia_clicked
 
                 if invia_clicked:
+                    user_row = cell_list[0].row
+                    usato = sheet.cell(user_row, 6).value
+                    sheet.update_cell(user_row, 6, 1)
                     df=pd.read_csv(file)
                     df['order_date']=pd.to_datetime(df['order_date'])
                     df['mese'] = df['order_date'].dt.strftime('%Y-%m')
